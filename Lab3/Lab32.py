@@ -4,11 +4,3 @@ z = -04.1e000
 print(type(x))
 print(type(y))
 print(type(z))
-
-
-
-
-
-
-
-
