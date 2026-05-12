@@ -1,23 +1,19 @@
-def matriz():
-    n = input("Tamaño de la matriz (que sea par): ")
-    
+def main():
     try:
-        n = int(n)
+        n = int(input("Ingrese el orden de la matriz (par): "))
+        
         if n % 2 != 0:
-            print("Te dije que fuera par.")
+            print("Error: El número debe ser par.")
             return
 
-        print("\nGenerando matriz...")
+        print(f"\nMatriz Identidad {n}x{n}:")
         for i in range(n):
-            for j in range(n):
-                if i == j:
-                    print("1", end="  ")
-                else:
-                    print("0", end="  ")
-            print()
+            # Genera la fila con 1 en la diagonal y 0 en el resto
+            fila = [1 if i == j else 0 for j in range(n)]
+            print(f"| {' '.join(map(str, fila))} |")
             
-    except:
-        print("Entrada inválida.")
+    except ValueError:
+        print("Error: Entrada no válida.")
 
 if __name__ == "__main__":
-    matriz()
+    main()

@@ -1,19 +1,21 @@
 def main():
-    n = input("Dime un número para el factorial: ")
+    print("--- CALCULADORA FACTORIAL ---")
     
     try:
-        n = int(n)
+        n = int(input("Introduce N: "))
+        
         if n < 0:
-            print("No se puede con negativos.")
+            print("Error: El número debe ser positivo.")
             return
-            
-        res = 1
+
+        fact = 1
         for i in range(1, n + 1):
-            res *= i
+            fact *= i
             
-        print(f"El factorial es: {res}")
-    except:
-        print("Eso no es un número válido.")
+        print(f">> Resultado: {n}! = {fact}")
+        
+    except ValueError:
+        print("Error: Entrada no válida.")
 
 if __name__ == "__main__":
     main()

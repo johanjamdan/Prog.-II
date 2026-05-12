@@ -1,38 +1,21 @@
 import string
 
-def contar_unicas(texto):
-    limpio = texto.translate(str.maketrans('', '', string.punctuation)).lower()
-    return len(set(limpio.split()))
+def contar_palabras_unicas(t):
+    t = t.translate(str.maketrans('', '', string.punctuation)).lower()
+    return len(set(t.split()))
 
-def la_mas_larga(texto):
-    palabras = texto.split()
-    return max(palabras, key=len) if palabras else ""
+def palabra_mas_larga(t):
+    p = t.translate(str.maketrans('', '', string.punctuation)).split()
+    return max(p, key=len) if p else ""
 
-def sacar_frecuencia(texto):
-    txt = texto.replace(" ", "").lower()
-    total = len(txt)
-    conteo = {}
-
-    for letra in txt:
-        if letra.isalpha():
-            conteo[letra] = conteo.get(letra, 0) + 1
-    
-    print("\nFrecuencias:")
-    for letra, num in conteo.items():
-        porcentaje = (num / total) * 100
-        print(f"'{letra}': {num} veces ({porcentaje:.1f}%)")
-
-def main():
-    txt = input("Pega tu texto aquí: ")
-    
-    if not txt.strip():
-        print("Escribe algo primero.")
-        return
-
-    print("-" * 20)
-    print(f"Palabras únicas: {contar_unicas(txt)}")
-    print(f"Palabra más larga: {la_mas_larga(txt)}")
-    sacar_frecuencia(txt)
+def frecuencia_caracteres(t):
+    l = [c.lower() for c in t if c != " "]
+    for c in sorted(set(l)):
+        p = (l.count(c)/len(l))*100
+        print(f"{c}: {l.count(c)} ({p:.1f}%)")
 
 if __name__ == "__main__":
-    main()
+    s = input("Texto: ")
+    if s.strip():
+        print(f"Únicas: {contar_palabras_unicas(s)}\nLarga: {palabra_mas_larga(s)}")
+        frecuencia_caracteres(s)
